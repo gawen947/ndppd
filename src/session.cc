@@ -96,6 +96,9 @@ void session::send_solicit()
 {
     logger::debug() << "session::send_solicit() (_ifaces.size() = " << _ifaces.size() << ")";
 
+    se->_ttl    = pr->timeout();
+    se->_status = WAITING;
+
     for (std::list<ptr<iface> >::iterator it = _ifaces.begin();
             it != _ifaces.end(); it++) {
         logger::debug() << " - " << (*it)->name();
