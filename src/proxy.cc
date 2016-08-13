@@ -77,8 +77,8 @@ void proxy::handle_solicit(const address& saddr, const address& daddr,
             switch ((*sit)->status()) {
             case session::WAITING:
             case session::INVALID:
-                _sessions.push_back(se);
-                se->send_solicit();
+                _sessions.push_back(*sit);
+                (*sit)->send_solicit();
                 break;
             case session::VALID:
                 (*sit)->send_advert();
